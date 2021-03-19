@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center container">
+    <h1 class="display-4">Welcome</h1>
+    <h3 class="text-center">Try to enter the password(its in the readme)</h3>
+    <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Index">
+        <div class="form-group">
+            <label for="pass">Input Here</label>
+            <input name="password" type="password" class="form-control" id="pass" placeholder="Password">
+        </div>
+        @if (ViewBag.x != null)
+        {
+            <input type="hidden" value="@ViewBag.x" />
+        }
+        else
+        {
+            <input type="hidden" value="3" />
+        }
+
+        <button type="submit" class="btn btn-dark float-right">Submit</button>
+    </form>
+
+    @if(ViewBag.x != null && ViewBag.x < 3)
+    {
+        <h2>@ViewBag.result</h2>
+        <h5>Tries left at this point: @ViewBag.x</h5>
+    }
+</div>
