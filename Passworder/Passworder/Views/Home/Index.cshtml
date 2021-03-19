@@ -12,11 +12,11 @@
         </div>
         @if (ViewBag.x != null)
         {
-            <input type="hidden" value="@ViewBag.x" />
+            <input type="hidden" name="x" value="@ViewBag.x" />
         }
         else
         {
-            <input type="hidden" value="3" />
+            <input type="hidden" name="x" value="3" />
         }
 
         <button type="submit" class="btn btn-dark float-right">Submit</button>
@@ -25,6 +25,5 @@
     @if(ViewBag.x != null && ViewBag.x < 3)
     {
         <h2>@ViewBag.result</h2>
-        <h5>Tries left at this point: @ViewBag.x</h5>
     }
 </div>

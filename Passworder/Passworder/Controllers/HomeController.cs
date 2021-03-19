@@ -38,26 +38,24 @@ namespace Passworder.Controllers
         public IActionResult Index(string password, int x)
         {
             string realPass = "password123";
-            string pass, result = "";
+            string result = "";
 
-
-            for (int i = 0; i < 3; i++)
+            if (password == realPass)
             {
-                pass = Console.ReadLine();
-                if (pass == realPass)
-                {
-                    result = "Welcome, User";
-                    break;
-                }
-                x++;
-                if (x > 2)
+                result = "Welcome, User";
+            }
+            else
+            {
+                x--;
+                if (x < 1)
                 {
                     result = "Sorry, you're done!";
-                    break;
                 }
-                result = "Incorrect password. You have only " + (3 - x) + " tries";
+                else
+                {
+                    result = "Incorrect password. You have only " + (x) + " tries";
+                }
             }
-
             ViewBag.result = result;
             ViewBag.x = x;
             return View();
